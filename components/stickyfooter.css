@@ -1,0 +1,41 @@
+
+
+      /* Sticky footer styles
+      -------------------------------------------------- */
+
+      html,
+      body {
+        height: 100%;
+        /* The html and body elements cannot have any padding or margin. */
+        font-size: 18px;
+      }
+
+      /* Wrapper for page content to push down footer */
+      #wrap {
+        min-height: 100%;
+        height: auto !important;
+        height: 100%;
+        /* Negative indent footer by it's height */
+        margin: 0 auto -150px;
+      }
+
+      .row {
+        width: 100% !important;
+        margin-left: 0px !important;
+      }
+
+      .col-12 {
+        width:100%;
+      }
+
+      .col-10 {
+        width: 83.33%;
+      }
+
+      .col-2 {
+        width:16.66%;
+      }
+
+      #table {
+        margin-top: 5px
+      } 

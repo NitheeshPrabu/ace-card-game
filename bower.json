@@ -1,0 +1,9 @@
+{
+    "name":  "ace-card-game",
+    "version": "1.0.0",
+    "dependencies": {
+        "bootstrap": "2.3.2",
+        "jquery": "latest"
+    },
+    "directory": "components"
+}

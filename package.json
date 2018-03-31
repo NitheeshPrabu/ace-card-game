@@ -1,0 +1,17 @@
+{
+  "name": "ace-card-game",
+  "description": "",
+  "version": "1.0.0",
+  "author": {
+    "name": "Nitheesh Prabu",
+    "email": "nitheeshprabu.s@gmail.com"
+  },
+  "dependencies": {
+    "express": "latest",
+    "socket.io": "latest",
+    "node-uuid": "~1.4.1"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}
