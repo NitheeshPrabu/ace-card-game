@@ -1,6 +1,6 @@
-// var socket = io.connect("https://ace-card-game.herokuapp.com"); //production
+var socket = io.connect("https://ace-card-game.herokuapp.com"); //production
 
-var socket = io.connect("127.0.0.1:3000");  //local
+// var socket = io.connect("127.0.0.1:3000");  //local
 
 var playerTableID = undefined;
 var gameDone = false;
