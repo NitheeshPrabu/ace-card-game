@@ -1,0 +1,114 @@
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ace | Card Game</title>
+	<link rel="stylesheet" type="text/css" href="components/foundation.min.css">
+	<link rel="stylesheet" type="text/css" href="components/motion-ui.min.css">
+	<link rel="stylesheet" type="text/css" href="components/foundation-prototype.min.css">
+	<link rel="stylesheet" type="text/css" href="components/foundation-icons.css">
+	<link rel="stylesheet" type="text/css" href="components/styles.css">
+	<link rel="stylesheet" type="text/css" href="components/stickyfooter.css">
+	<script src="components/jquery-3.3.1.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="client.js"></script>
+	<meta class="foundation-mq">
+</head>
+<body style="background-image: url('resources/bg.jpg');">
+	
+	<div class="grid-container" id="login">
+		<div class="grid-x grid-margin-x">
+			<div class="cell container-login">
+				<div class="wrap-login" style="padding-top: 30px; padding-bottom: 50px;">
+					<span class="login-form-title" style="padding-bottom: 41px">
+						Enter name
+					</span>
+					<form class="login-form" style="padding-top: 5px; padding-bottom: 33px">
+						<div class="wrap-input">
+							<input class="input" id="name" placeholder="Player name" type="text">
+							<label id="error"></label>
+						</div>
+						<div class="container-login-form-btn" style="margin-top: 32px">
+							<button type="submit" class="login-form-btn" id="join">
+								Join Room
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="off-canvas position-left reveal-for-large" id="my-info" data-off-canvas>
+		<div class="grid-y grid-padding-x wrap">
+			<div class="cell auto chatboxmain">
+				<h5>Chat Window</h5>
+				<div class="cell-10" id="chatbox" style="overflow-y: auto">
+					<ul id="chat" class="unstyled"></ul>
+				</div>
+				<div class="cell-2">
+					<center>
+						<input type="text" class="input-group-sm-chat" placeholder="Type message..." id="chatText">
+						<button class="btn btn-sm btn-primary" onClick="sendMessage()">Send</button>
+					</center>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="off-canvas-content" id="game" data-off-canvas-content>
+		<div class="title-bar chatboxmain hide-for-large">
+			<div class="title-bar-left">
+				<button class="menu-icon" type="button" data-toggle="my-info"></button>
+				<span class="title-bar-title">Chat Window</span>
+			</div>
+		</div>
+		<div class="grid-container"> 
+			<div class="grid-x grid-margin-x wrap">
+				<div class="cell" id="main">
+					<p style="color: white; font-weight: bold; font-size: 36px">Aces</p>
+					<div class="alert alert-info" style="margin: 20px" id="tableList">
+						<p>Room Details:</p>
+						<p>Tables:</p>
+						<ul class="unstyled">
+							<li><p id="listOfTables"></p></li>
+						</ul>
+					</div>
+					<div class="cell" style="color: white; margin: 20px">
+						<div class="cell" id="waiting">
+							<div><p>Press the Start Game button when you are ready. Game will begin when all players are ready.</p></div>
+							<div id="startGame"><button class="btn btn-warning">Start Game</button></div>
+						</div>
+						<div class="cell">
+							<ul class="inline">
+								<li><p id="progressUpdate"></p></li>
+								<li><p id="opponentCardCount"></p></li>
+							</ul>
+						</div>
+						<div class="cell" id="playArea">
+							<p id="playOption"></p>
+							<p>Discard pile:</p>
+							<div class="cell row">
+								<p id="table"></p>
+							</div>
+							<p>Cards in your hand:</p>
+							<div class="cell row">
+								<p id="hand"></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="cell log" id="footer">			
+				<h4>Game Log</h4>
+				<ul id="updates" class="unstyled"></ul>
+			</div>
+		</div>
+	</div>
+	<script src="components/foundation.min.js"></script>
+	<script src="components/motion-ui.min.js"></script>
+	<script>
+		$(document).foundation();
+	</script>
+</body>
+</html>

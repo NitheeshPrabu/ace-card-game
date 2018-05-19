@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<head>
+	<title>Aces</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Bootstrap -->
+	<link href="components/bootstrap/docs/assets/css/bootstrap.css" rel="stylesheet" media="screen">
+	<link href="components/stickyfooter.css" rel="stylesheet" media="screen">
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="components/jquery/jquery.js"></script>
+  <script src="components/bootstrap/docs/assets/js/bootstrap.js"></script>
+  <script src="client.js"></script>
+</head>
+<body>
+	<!-- Part 1: Wrap all page content here -->
+	<div id="wrap">
+		<div class="container">
+			<div class="page-header">
+				<h1>Aces</h1>
+			</div>
+			<div class="row">
+				<div class="span9">
+					<p>Hello and welcome to Aces - Card Game. Please have a <a data-target="#myModal" data-toggle="modal">look at the rules</a> before playing.</p>
+				</div>
+				<div id="counter"></div>
+			</div>
+			<div class="alert row" id="tableList">
+				<p>Room Details:</p>
+				<p>Tables:</p>
+				<ul class="inline">
+					<li><p id="listOfTables"></p></li>
+				</ul>
+			</div>
+			<div id="loginForm">
+				<form class="form-inline">
+					<input type="text" class="input" id="name" placeholder="Your name">
+					<button type="submit" class="btn btn-success" id="join">Join room</button>
+					<label id="error"></label>
+				</form>
+			</div>
+			<div id="waiting"><p>Waiting for other player to join</p></div>
+			<div id="startGame"><button class="btn btn-success">Start Game</button></div>
+			<div>
+				<ul class="inline">
+					<li><p id="progressUpdate"></p></li>
+					<li><p id="opponentCardCount"></p></li>
+				</ul>
+			</div>
+			<div id="playArea">
+				<p id="playOption"></p>
+				<p>Discard pile:</p>
+				<div class="row">
+					<p id="table"></p>
+				</div>
+				<p>Cards in your hand:</p>
+				<p id="hand"></p>
+			</div>
+		</div>
+		<div class="container" style="margin-top:20px">
+			<div class="row" id="log">
+				<div>
+					<p style="font-size:36px;font-weight: bold;padding-top:10px">Game Log</p>
+				</div>
+				<div>
+					<ul id="updates" class="unstyled"></ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="myModal" class="modal fade" role="dialog" style="display:none;">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Rules of the game:</h4>
+				</div>
+				<div class="modal-body">
+					<p>
+						Play begins with the player who has the Ace of Spades who must throw that card. Play then continues clockwise with each player throwing a card of the same suit. Once everyone has thrown their card the round is complete and all played cards are thrown into the discard pile. The next round starts with the player who threw the highest card in the previous round (Aces are the highest cards and twos are the lowest). This player can throw any card from their hand.
+						<br><br>
+						If a player doesn’t have any cards of the current suit then they are free to throw any other card from their hand. This card is called a <em>tochoo</em> and results in the round ending immediately. Whoever threw the largest card of the current suit must pick up all cards that had been played in that round and this player then starts the next round.
+						<br><br>
+						Play continues until there is only one player with cards. That player is the loser of this round.
+						<br><br>
+						<strong><u>Special rules</u></strong>
+						<br>
+						<ul>
+							<li>A player may take the cards of the player to their left on their turn. The player whose cards were taken is out of the game and is not the loser.</li>
+							<li>If the player who threw the highest card in a round doesn’t have any more cards then they will begin the next round by randomly choosing a card from the discard pile.</li>
+							<li>They will need to continue doing this until they no longer throw the highest card or a tochoo is thrown resulting in them picking up cards.</li>
+							<li>If there are only two players remaining, a tochoo will end the game with the player receiving it becoming the loser.</li>
+							<li>If a player doesn’t have any Spades in the first round then they’re free to throw any card.</li>
+							<li>The tochoo is waived, so the starting player doesn’t have to pick up the cards.</li>
+						</ul>
+					</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
