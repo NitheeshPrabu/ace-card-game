@@ -33,6 +33,36 @@ Game.prototype._shufflePack = function(pack) {
 	return pack;
 }
 
+//sort pack of cards
+Game.prototype.sortCards = function (cards) {
+	var hearts = [], clubs = [], diamonds = [], spades = [];
+	for (var i = 0; i < cards.length; i++) {
+		if (cards[i][cards[i].length-1] == 'H')
+			hearts.push(cards[i].substr(0,cards[i].length));
+		else if (cards[i][cards[i].length-1] == 'C')
+			clubs.push(cards[i].substr(0,cards[i].length));
+		else if (cards[i][cards[i].length-1] == 'D')
+			diamonds.push(cards[i].substr(0,cards[i].length));
+		else if (cards[i][cards[i].length-1] == 'S')
+			spades.push(cards[i].substr(0,cards[i].length));
+	}
+	var collator = new Intl.Collator(undefined, {numeric: true, sensitivity: 'base'});
+	hearts.sort(collator.compare);
+	clubs.sort(collator.compare);
+	diamonds.sort(collator.compare);
+	spades.sort(collator.compare);
+	cards = [];
+	for (var i = 0; i < hearts.length; i++)
+		cards.push(hearts[i]);
+	for (var i = 0; i < clubs.length; i++)
+		cards.push(clubs[i]);
+	for (var i = 0; i < diamonds.length; i++)
+		cards.push(diamonds[i]);
+	for (var i = 0; i < spades.length; i++)
+		cards.push(spades[i]);
+	return cards;
+}
+
 //draw one card from the pack of cards, initial T|F appends cards in hand
 Game.prototype.drawCard = function(pack, amount, hand, initial) {
 	var cards = [];

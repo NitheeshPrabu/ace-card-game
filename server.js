@@ -138,7 +138,7 @@ io.sockets.on('connection', function (socket) {
 			table.status = "ingame"; //set the table status to unavailable
 			var startingPlayerID;
 			for (var i = 0; i < table.players.length; i++) { //go through the players array (contains all players sitting at a table)
-				table.players[i].hand = table.gameObj.drawCard(table.pack, 52/table.players.length, "", 1); //assign initial 5 cards to players
+				table.players[i].hand = table.gameObj.drawCard(table.pack, 52/table.players.length, [], 1); //assign initially approx equal cards to players
 				if (table.players[i].hand.indexOf("14S") != -1) {
 				  startingPlayerID = table.playersID[i]; //get the ID of the player with Aces of Spade.
 				  table.roundStartedBy = startingPlayerID;
@@ -147,6 +147,7 @@ io.sockets.on('connection', function (socket) {
 			for (var i = 0; i < 52%table.players.length; i++)
 				table.players[i].hand.push(table.gameObj.drawCard(table.pack,1,table.players[i].hand,1)[0]);
 			for (var i = 0; i < table.players.length; i++) {
+				table.players[i].hand = table.gameObj.sortCards(table.players[i].hand);
 				if (table.players[i].id === startingPlayerID) { //this player will start the turn
 					table.players[i].turnFinished = false;
 					console.log(table.players[i].name + " starts the game on "+ table.name + ".");
@@ -278,6 +279,7 @@ io.sockets.on('connection', function (socket) {
 								messaging.sendEventToAPlayer("cardInHandCount", {tableID: table.id, players: table.players}, io, table.players, table.players[i]);
 							}
 						  	var cards = table.gameObj.drawCard(table.cardsOnTable, table.cardsOnTable.length, table.players[maxID].hand, 0);
+						  	table.players[maxID].hand = table.gameObj.sortCards(table.players[maxID].hand);
 							messaging.sendEventToAllPlayers("updateCardsOnTable", {tableID: table.id, cardsOnTable: table.cardsOnTable},io,table.players);
 							messaging.sendEventToAllPlayers("clearLog",{tableID: table.id}, io, table.players);
 						  	messaging.sendEventToAPlayer("play", {tableID: table.id, hand: table.players[maxID].hand},io,table.players,table.players[maxID]);
