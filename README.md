@@ -1,7 +1,10 @@
 # AceCardGame
-Ace Card Game using socket.io
+Ace Card Game using HTML/CSS/Javascript and socket.io
 
 ## Changelog:
+
+### Version 2.1:
+* Prettified display of cards in hand by arranging according to suit and increasing order of value.
 
 ### Version 2.0:
 * Added ability to chat between players in the room, and within the table once game begins.
