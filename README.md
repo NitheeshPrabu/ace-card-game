@@ -1,6 +1,8 @@
 # AceCardGame
 Ace Card Game using HTML/CSS/Javascript and socket.io
 
+<p align="center"><img src="http://i65.tinypic.com/30utqhh.png"/></p>
+
 ## Changelog:
 
 ### Version 2.1:
