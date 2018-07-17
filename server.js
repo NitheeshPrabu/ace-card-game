@@ -75,7 +75,7 @@ io.sockets.on('connection', function (socket) {
 	- change the player's status from 'available' to 'in table'
 	- save the player's name, and ID (socket client ID) in the appropriate arrays at the table.
 
-	If a table has 3 players, we need to do more:
+	If a table has n players, we need to do more:
 	- set the table's status from 'available' to 'unavailable'
 	- create a pack (instantiate the game object)
 	- send a time counter of 3 seconds to both connected clients
@@ -120,11 +120,8 @@ io.sockets.on('connection', function (socket) {
 	we setup the play environment:
 	- change the table's state to "unavailable"
 	- change the player's status to "playing"
-	- assign 5 cards to each player
-	- flip the first card
-	- we are going to check if this card is an action card
-	- if it is, we will call the appropriate action
-	- otherwise we are going to assign the start priviledge to a random player at the table
+	- assign cards to each player
+	- check who has ace of spaces and start game with that player
 	*/
 
 	socket.on("readyToPlay", function(data) {
